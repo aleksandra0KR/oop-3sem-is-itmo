@@ -4,15 +4,14 @@ namespace Itmo.ObjectOrientedProgramming.Lab1.CaseStrengths;
 
 public abstract class CaseAbility
 {
-    protected CaseAbility(char type, int damage)
+    protected CaseAbility(int damage)
     {
-        TypeOfCase = type;
         DamageCare = damage;
     }
 
     public abstract int DamageCare { get; protected set; }
     public bool IsWorking { get; private set;  } = true;
-    public abstract char TypeOfCase { get; protected set; }
+    public abstract TypesOfCases TypeOfCase { get; }
 
     public void TakeDamage(Obstacle obstacle)
     {

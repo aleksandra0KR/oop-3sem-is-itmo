@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Itmo.ObjectOrientedProgramming.Lab1.Environments;
 using Itmo.ObjectOrientedProgramming.Lab1.Obstacles;
 using Itmo.ObjectOrientedProgramming.Lab1.Ships;
 using Environment = Itmo.ObjectOrientedProgramming.Lab1.Environments.Environment;
@@ -110,7 +111,7 @@ public class Route
             }
 
             // проверяет сможет ли карабль пройти нужное расстояние канала и считаем топливо для прохождения
-            if (currentroute.TypeOfEnvironment == 'F')
+            if (currentroute.TypeOfEnvironment == TypesOfEnvironments.FoggySpace)
             {
                 if (currentShip.EngineSecond == null || currentShip.EngineSecond.RangeOfTravel < currentDistance) return "Loose! You lost your ship";
                 _amoutOfMatter += currentroute.CountAmountOfFuel(currentShip, currentDistance);

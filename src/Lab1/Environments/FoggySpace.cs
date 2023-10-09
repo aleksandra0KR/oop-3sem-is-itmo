@@ -6,22 +6,15 @@ namespace Itmo.ObjectOrientedProgramming.Lab1.Environments;
 
 public class FoggySpace : Environment
 {
-    private char _type;
-
     public FoggySpace(int numberOfChannels, int lenghtOfChannels)
     {
         NumberOfChannels = numberOfChannels;
         LenghtOfChannels = lenghtOfChannels;
-        TypeOfEnvironment = 'F';
     }
 
-    public override char TypeOfEnvironment
-    {
-        get => _type;
-        protected set => _type = 'F';
-    }
+    public override TypesOfEnvironments TypeOfEnvironment => TypesOfEnvironments.FoggySpace;
 
-    protected override Collection<char> NeededEngine { get; } = new() { 'A', 'O', 'G' };
+    protected override Collection<TypesOfEngines> NeededEngine { get; } = new() { TypesOfEngines.EngineAlpha, TypesOfEngines.EngineOmega, TypesOfEngines.EngineGamma };
     private int NumberOfChannels { get; set; }
     private int LenghtOfChannels { get; set; }
 

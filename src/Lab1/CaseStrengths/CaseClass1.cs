@@ -2,10 +2,9 @@ namespace Itmo.ObjectOrientedProgramming.Lab1.CaseStrengths;
 
 public class CaseClass1 : CaseAbility
 {
-    private char _typeOfCase;
     private int _demadeCare = 10;
     public CaseClass1()
-    : base('1', 10) { }
+    : base(10) { }
 
     public override int DamageCare
     {
@@ -13,9 +12,5 @@ public class CaseClass1 : CaseAbility
         protected set => _demadeCare = value;
     }
 
-    public override char TypeOfCase
-    {
-        get => _typeOfCase;
-        protected set => _typeOfCase = '1';
-    }
+    public override TypesOfCases TypeOfCase => TypesOfCases.FirstCase;
 }

@@ -4,9 +4,8 @@ public class EngineClassC : Engine
 {
     private const int FuelForKm = 10;
     private int _speed;
-    private char _type;
     public EngineClassC()
-        : base('C', 100) { }
+        : base(100) { }
 
     public override int FuelForActivation => FuelForKm;
 
@@ -16,11 +15,7 @@ public class EngineClassC : Engine
         protected set => _speed = value;
     }
 
-    public override char TypeOfIEngine
-    {
-        get => _type;
-        protected set => _type = 'C';
-    }
+    public override TypesOfEngines TypeOfIEngine => TypesOfEngines.EngineC;
 
     public override int CountFuelConsumption(int distance)
     {

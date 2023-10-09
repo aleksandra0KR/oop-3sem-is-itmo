@@ -1,3 +1,4 @@
+using Itmo.ObjectOrientedProgramming.Lab1.Deflectors;
 using Itmo.ObjectOrientedProgramming.Lab1.Environments;
 
 namespace Itmo.ObjectOrientedProgramming.Lab1.Obstacles;
@@ -8,7 +9,7 @@ public class AntimatterFlares : Obstacle
         : base(30)
     {
         if (environment == null) throw new ValueException(nameof(environment));
-        if (environment.TypeOfEnvironment != 'F')
+        if (environment.TypeOfEnvironment != TypesOfEnvironments.FoggySpace)
         {
             throw new TypeExeption("Not the needed type of Environment");
         }
@@ -24,8 +25,8 @@ public class AntimatterFlares : Obstacle
         return int.MaxValue;
     }
 
-    public override int CountDamageToDeflector(char typeOfDeflector)
+    public override int CountDamageToDeflector(TypesOfDeflectors typeOfDeflector)
     {
-        return typeOfDeflector != 'F' ? int.MaxValue : Damage;
+        return typeOfDeflector != TypesOfDeflectors.FotonDeflector ? int.MaxValue : Damage;
     }
 }

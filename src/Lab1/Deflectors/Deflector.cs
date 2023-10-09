@@ -4,15 +4,14 @@ namespace Itmo.ObjectOrientedProgramming.Lab1.Deflectors;
 
 public abstract class Deflector
 {
-    protected Deflector(char type, int demagecare)
+    protected Deflector(int demagecare)
     {
-        TypeOfDeflector = type;
         DemageCare = demagecare;
     }
 
     public abstract int DemageCare { get; protected set; }
     public bool IsWorking { get; protected set;  } = true;
-    public abstract char TypeOfDeflector { get; protected set; }
+    public abstract TypesOfDeflectors TypeOfDeflector { get; }
 
     public void TakeDamage(Obstacle obstacle)
     {

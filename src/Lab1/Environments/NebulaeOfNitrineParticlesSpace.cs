@@ -6,20 +6,11 @@ namespace Itmo.ObjectOrientedProgramming.Lab1.Environments;
 
 public class NebulaeOfNitrineParticlesSpace : Environment
 {
-    private char _type;
+    public NebulaeOfNitrineParticlesSpace() { }
 
-    public NebulaeOfNitrineParticlesSpace()
-    {
-        TypeOfEnvironment = 'N';
-    }
+    public override TypesOfEnvironments TypeOfEnvironment => TypesOfEnvironments.NebulaeOdNitrineParticlesSpacce;
 
-    public override char TypeOfEnvironment
-    {
-        get => _type;
-        protected set => _type = 'N';
-    }
-
-    protected override Collection<char> NeededEngine { get; } = new() { 'E' };
+    protected override Collection<TypesOfEngines> NeededEngine { get; } = new() { TypesOfEngines.EngineE };
 
     public override int CountAmountOfFuel(Ship ship, int distance)
     {

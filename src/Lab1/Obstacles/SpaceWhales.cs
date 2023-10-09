@@ -1,4 +1,5 @@
-using Environment = Itmo.ObjectOrientedProgramming.Lab1.Environments.Environment;
+using Itmo.ObjectOrientedProgramming.Lab1.Deflectors;
+using Itmo.ObjectOrientedProgramming.Lab1.Environments;
 
 namespace Itmo.ObjectOrientedProgramming.Lab1.Obstacles;
 
@@ -8,7 +9,7 @@ public class SpaceWhales : Obstacle
     : base(30)
     {
         if (environment == null) throw new ValueException(nameof(environment));
-        if (environment.TypeOfEnvironment != 'N')
+        if (environment.TypeOfEnvironment != TypesOfEnvironments.NebulaeOdNitrineParticlesSpacce)
         {
             throw new TypeExeption("Not the needed type of Environment");
         }
@@ -23,8 +24,8 @@ public class SpaceWhales : Obstacle
         return int.MaxValue;
     }
 
-    public override int CountDamageToDeflector(char typeOfDeflector)
+    public override int CountDamageToDeflector(TypesOfDeflectors typeOfDeflector)
     {
-        return typeOfDeflector == 'N' ? Damage : 400;
+        return typeOfDeflector == TypesOfDeflectors.NitritDeflector ? Damage : 400;
     }
 }

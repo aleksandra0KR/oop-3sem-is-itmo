@@ -7,10 +7,10 @@ namespace Itmo.ObjectOrientedProgramming.Lab1.Environments;
 
 public abstract class Environment
 {
-    public abstract char TypeOfEnvironment { get; protected set; }
+    public abstract TypesOfEnvironments TypeOfEnvironment { get; }
     public Collection<Obstacle> Obstacles { get; } = new();
 
-    protected abstract Collection<char> NeededEngine { get; }
+    protected abstract Collection<TypesOfEngines> NeededEngine { get; }
 
     public abstract int CountAmountOfFuel(Ship ship, int distance);
     public void AddObstacles(Collection<Obstacle> obstacles)
@@ -29,7 +29,7 @@ public abstract class Environment
     public bool MatchEnvironmentAndEngine(Engine? engine)
     {
         if (engine == null) return false;
-        foreach (char needed in NeededEngine)
+        foreach (TypesOfEngines needed in NeededEngine)
         {
             if (engine.TypeOfIEngine == needed) return true;
         }

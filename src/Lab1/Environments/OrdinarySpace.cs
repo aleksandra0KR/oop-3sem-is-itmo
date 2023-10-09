@@ -6,20 +6,11 @@ namespace Itmo.ObjectOrientedProgramming.Lab1.Environments;
 
 public class OrdinarySpace : Environment
 {
-    private char _type;
+    public OrdinarySpace() { }
 
-    public OrdinarySpace()
-    {
-        TypeOfEnvironment = 'O';
-    }
+    public override TypesOfEnvironments TypeOfEnvironment => TypesOfEnvironments.OrdinarySpace;
 
-    public override char TypeOfEnvironment
-    {
-        get => _type;
-        protected set => _type = 'O';
-    }
-
-    protected override Collection<char> NeededEngine { get; } = new() { 'C', 'E' };
+    protected override Collection<TypesOfEngines> NeededEngine { get; } = new() { TypesOfEngines.EngineC, TypesOfEngines.EngineE };
 
     public override int CountAmountOfFuel(Ship ship, int distance)
     {

@@ -2,10 +2,9 @@ namespace Itmo.ObjectOrientedProgramming.Lab1.Deflectors;
 
 public class DeflectorClassNitrit : Deflector
 {
-    private char _typeOfDeflector;
     private int _demadeCare = 900;
     public DeflectorClassNitrit()
-        : base('N', 900) { }
+        : base(900) { }
 
     public override int DemageCare
     {
@@ -13,9 +12,5 @@ public class DeflectorClassNitrit : Deflector
         protected set => _demadeCare = value;
     }
 
-    public override char TypeOfDeflector
-    {
-        get => _typeOfDeflector;
-        protected set => _typeOfDeflector = 'N';
-    }
+    public override TypesOfDeflectors TypeOfDeflector => TypesOfDeflectors.NitritDeflector;
 }

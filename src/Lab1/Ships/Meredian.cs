@@ -9,7 +9,7 @@ public class Meredian : Ship
     public Meredian(Engine engineFirst, Deflector deflector, CaseAbility caseAbility)
     {
         if (engineFirst == null) throw new ValueException(nameof(engineFirst));
-        if (engineFirst.TypeOfIEngine != 'E')
+        if (engineFirst.TypeOfIEngine != TypesOfEngines.EngineE)
         {
             throw new TypeExeption("Not the needed type of Engine");
         }
@@ -17,14 +17,14 @@ public class Meredian : Ship
         EngineFirst = engineFirst;
 
         if (deflector == null) throw new ValueException(nameof(deflector));
-        if (deflector.TypeOfDeflector != '2' && deflector.TypeOfDeflector != 'F' && deflector.TypeOfDeflector != 'N')
+        if (deflector.TypeOfDeflector != TypesOfDeflectors.SecondDeflector && deflector.TypeOfDeflector != TypesOfDeflectors.FotonDeflector && deflector.TypeOfDeflector != TypesOfDeflectors.NitritDeflector)
         {
             throw new TypeExeption("Not the needed type of Deflector");
         }
 
         DeflectorOfShip = deflector;
         if (caseAbility == null) throw new ValueException(nameof(caseAbility));
-        if (caseAbility.TypeOfCase != '2')
+        if (caseAbility.TypeOfCase != TypesOfCases.SecondCase)
         {
             throw new TypeExeption("Not the needed type of Case");
         }
