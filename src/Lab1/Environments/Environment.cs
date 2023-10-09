@@ -15,7 +15,7 @@ public abstract class Environment
     public abstract int CountAmountOfFuel(Ship ship, int distance);
     public void AddObstacles(Collection<Obstacle> obstacles)
     {
-        if (obstacles == null)
+        if (obstacles is null)
         {
             return;
         }
@@ -28,7 +28,7 @@ public abstract class Environment
 
     public bool MatchEnvironmentAndEngine(Engine? engine)
     {
-        if (engine == null) return false;
+        if (engine is null) return false;
         foreach (TypesOfEngines needed in NeededEngine)
         {
             if (engine.TypeOfIEngine == needed) return true;

@@ -20,8 +20,8 @@ public class FoggySpace : Environment
 
     public override int CountAmountOfFuel(Ship ship, int distance)
     {
-        if (ship == null) throw new ValueException("Ship is null");
-        if (ship.EngineSecond == null) throw new ValueException("Engine is null");
+        if (ship is null) throw new ValueException("Ship is null");
+        if (ship.EngineSecond is null) throw new ValueException("Engine is null");
         EngineClassJumping engine = ship.EngineSecond;
         int amountOfFuel = 0;
         for (int i = 0; i < NumberOfChannels; i++)

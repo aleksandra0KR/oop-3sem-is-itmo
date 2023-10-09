@@ -9,7 +9,7 @@ public class Meteorite : Obstacle
     public Meteorite(Environment? environment)
     : base(20)
     {
-        if (environment == null) throw new ValueException(nameof(environment));
+        if (environment is null) throw new ValueException(nameof(environment));
         if (environment.TypeOfEnvironment != TypesOfEnvironments.OrdinarySpace)
         {
             throw new TypeExeption("Not the needed type of Environment");

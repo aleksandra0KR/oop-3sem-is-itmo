@@ -8,7 +8,7 @@ public class AntimatterFlares : Obstacle
     public AntimatterFlares(Environment? environment)
         : base(30)
     {
-        if (environment == null) throw new ValueException(nameof(environment));
+        if (environment is null) throw new ValueException(nameof(environment));
         if (environment.TypeOfEnvironment != TypesOfEnvironments.FoggySpace)
         {
             throw new TypeExeption("Not the needed type of Environment");

@@ -22,7 +22,7 @@ public class Route
 
     public void AddRoutes(Dictionary<int, Environment>? allRoutes)
     {
-        if (allRoutes == null)
+        if (allRoutes is null)
         {
             return;
         }
@@ -35,7 +35,7 @@ public class Route
 
     public void AddShips(Collection<Ship>? allShips)
     {
-        if (allShips == null)
+        if (allShips is null)
         {
             return;
         }
@@ -48,12 +48,12 @@ public class Route
 
     public string Start()
     {
-        if (_allRoutes == null)
+        if (_allRoutes is null)
         {
             return "Win! 0 min, 0 fuel";
         }
 
-        if (_allShips == null)
+        if (_allShips is null)
         {
             return "Loose! You lost your ship";
         }
@@ -77,13 +77,13 @@ public class Route
             foreach (Obstacle obstracle in currentroute.Obstacles)
             {
                 // сначала урон выдерживают дефлекторы, если они есть
-                if (currentShip.DeflectorOfShip != null && currentShip.DeflectorOfShip.IsWorking)
+                if (currentShip.DeflectorOfShip is not null && currentShip.DeflectorOfShip.IsWorking)
                 {
                     currentShip.DeflectorOfShip.TakeDamage(obstracle);
                 }
 
                 // если урон осался после дефлекторов или их не было, проверяем урон корпусу
-                if (obstracle.Damage > 0 && currentShip.CaseOfShip != null && currentShip.CaseOfShip.IsWorking)
+                if (obstracle.Damage > 0 && currentShip.CaseOfShip is not null && currentShip.CaseOfShip.IsWorking)
                 {
                     currentShip.CaseOfShip.TakeDamage(obstracle);
                 }
@@ -96,16 +96,16 @@ public class Route
             }
 
             // активация двигателей
-            if (currentShip.EngineFirst != null && currentShip.EngineSecond != null)
+            if (currentShip.EngineFirst is not null && currentShip.EngineSecond is not null)
             {
                 _amoutOfFuel += currentShip.EngineFirst.FuelForActivation;
                 _amoutOfMatter += currentShip.EngineSecond.FuelForActivation;
             }
-            else if (currentShip.EngineFirst != null)
+            else if (currentShip.EngineFirst is not null)
             {
                 _amoutOfFuel += currentShip.EngineFirst.FuelForActivation;
             }
-            else if (currentShip.EngineSecond != null)
+            else if (currentShip.EngineSecond is not null)
             {
                 _amoutOfMatter += currentShip.EngineSecond.FuelForActivation;
             }
@@ -113,7 +113,7 @@ public class Route
             // проверяет сможет ли карабль пройти нужное расстояние канала и считаем топливо для прохождения
             if (currentroute.TypeOfEnvironment == TypesOfEnvironments.FoggySpace)
             {
-                if (currentShip.EngineSecond == null || currentShip.EngineSecond.RangeOfTravel < currentDistance) return "Loose! You lost your ship";
+                if (currentShip.EngineSecond is null || currentShip.EngineSecond.RangeOfTravel < currentDistance) return "Loose! You lost your ship";
                 _amoutOfMatter += currentroute.CountAmountOfFuel(currentShip, currentDistance);
             }
             else

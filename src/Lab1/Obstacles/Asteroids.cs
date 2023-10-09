@@ -9,7 +9,7 @@ public class Asteroids : Obstacle
     public Asteroids(Environment? environment)
     : base(10)
     {
-        if (environment == null) throw new ValueException(nameof(environment));
+        if (environment is null) throw new ValueException(nameof(environment));
         if (environment.TypeOfEnvironment != TypesOfEnvironments.OrdinarySpace)
         {
             throw new TypeExeption("Not the needed type of Environment");

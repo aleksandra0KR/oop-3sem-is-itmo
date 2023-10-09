@@ -15,7 +15,7 @@ public abstract class CaseAbility
 
     public void TakeDamage(Obstacle obstacle)
     {
-        if (obstacle == null) return;
+        if (obstacle is null) return;
         if (!IsWorking) return;
         DamageCare -= obstacle.CountDamageToCase();
         if (DamageCare >= 0)

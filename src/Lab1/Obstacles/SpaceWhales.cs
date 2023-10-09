@@ -8,7 +8,7 @@ public class SpaceWhales : Obstacle
     public SpaceWhales(Environment? environment)
     : base(30)
     {
-        if (environment == null) throw new ValueException(nameof(environment));
+        if (environment is null) throw new ValueException(nameof(environment));
         if (environment.TypeOfEnvironment != TypesOfEnvironments.NebulaeOdNitrineParticlesSpacce)
         {
             throw new TypeExeption("Not the needed type of Environment");
