@@ -6,8 +6,6 @@ namespace Itmo.ObjectOrientedProgramming.Lab1.Environments;
 
 public class OrdinarySpace : Environment
 {
-    public OrdinarySpace() { }
-
     public override TypesOfEnvironments TypeOfEnvironment => TypesOfEnvironments.OrdinarySpace;
 
     protected override Collection<TypesOfEngines> NeededEngine { get; } = new() { TypesOfEngines.EngineC, TypesOfEngines.EngineE };

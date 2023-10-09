@@ -3,10 +3,10 @@ namespace Itmo.ObjectOrientedProgramming.Lab1.Engines;
 public class EngineClassJunpingGamma : EngineClassJumping
 {
     private const int MatterForKM = 30;
+    private static int _speed = 100;
     private int _rangeoftraver = int.MaxValue;
-    private int _speed;
     public EngineClassJunpingGamma()
-        : base(100, int.MaxValue) { }
+        : base(_speed) { }
 
     public override TypesOfEngines TypeOfIEngine => TypesOfEngines.EngineGamma;
 
@@ -16,11 +16,7 @@ public class EngineClassJunpingGamma : EngineClassJumping
         protected set => _speed = value;
     }
 
-    public override int RangeOfTravel
-    {
-        get => _rangeoftraver;
-        protected set => _rangeoftraver = int.MaxValue;
-    }
+    public override int RangeOfTravel => _rangeoftraver;
 
     public override int FuelForActivation => MatterForKM;
 

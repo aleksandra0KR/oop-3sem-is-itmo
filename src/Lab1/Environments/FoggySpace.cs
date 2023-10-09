@@ -15,8 +15,8 @@ public class FoggySpace : Environment
     public override TypesOfEnvironments TypeOfEnvironment => TypesOfEnvironments.FoggySpace;
 
     protected override Collection<TypesOfEngines> NeededEngine { get; } = new() { TypesOfEngines.EngineAlpha, TypesOfEngines.EngineOmega, TypesOfEngines.EngineGamma };
-    private int NumberOfChannels { get; set; }
-    private int LenghtOfChannels { get; set; }
+    private int NumberOfChannels { get; }
+    private int LenghtOfChannels { get; }
 
     public override int CountAmountOfFuel(Ship ship, int distance)
     {

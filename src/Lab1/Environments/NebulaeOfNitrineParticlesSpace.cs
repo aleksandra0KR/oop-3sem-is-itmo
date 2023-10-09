@@ -6,8 +6,6 @@ namespace Itmo.ObjectOrientedProgramming.Lab1.Environments;
 
 public class NebulaeOfNitrineParticlesSpace : Environment
 {
-    public NebulaeOfNitrineParticlesSpace() { }
-
     public override TypesOfEnvironments TypeOfEnvironment => TypesOfEnvironments.NebulaeOdNitrineParticlesSpacce;
 
     protected override Collection<TypesOfEngines> NeededEngine { get; } = new() { TypesOfEngines.EngineE };

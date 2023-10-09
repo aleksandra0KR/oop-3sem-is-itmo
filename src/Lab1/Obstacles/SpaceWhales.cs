@@ -5,8 +5,10 @@ namespace Itmo.ObjectOrientedProgramming.Lab1.Obstacles;
 
 public class SpaceWhales : Obstacle
 {
+    private static int _damage = 30;
+    private int _damageToNotNitritDeflector = 400;
     public SpaceWhales(Environment? environment)
-    : base(30)
+    : base(_damage)
     {
         if (environment is null) throw new ValueException(nameof(environment));
         if (environment.TypeOfEnvironment != TypesOfEnvironments.NebulaeOdNitrineParticlesSpacce)
@@ -26,6 +28,6 @@ public class SpaceWhales : Obstacle
 
     public override int CountDamageToDeflector(TypesOfDeflectors typeOfDeflector)
     {
-        return typeOfDeflector == TypesOfDeflectors.NitritDeflector ? Damage : 400;
+        return typeOfDeflector == TypesOfDeflectors.NitritDeflector ? Damage : _damageToNotNitritDeflector;
     }
 }

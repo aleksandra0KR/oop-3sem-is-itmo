@@ -5,8 +5,9 @@ namespace Itmo.ObjectOrientedProgramming.Lab1.Obstacles;
 
 public class AntimatterFlares : Obstacle
 {
+    private static int _damage = 30;
     public AntimatterFlares(Environment? environment)
-        : base(30)
+        : base(_damage)
     {
         if (environment is null) throw new ValueException(nameof(environment));
         if (environment.TypeOfEnvironment != TypesOfEnvironments.FoggySpace)

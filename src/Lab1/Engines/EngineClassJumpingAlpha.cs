@@ -3,10 +3,10 @@ namespace Itmo.ObjectOrientedProgramming.Lab1.Engines;
 public class EngineClassJumpingAlpha : EngineClassJumping
 {
     private const int MatterForKm = 10;
-    private int _rangeOfTraver;
-    private int _speed;
+    private static int _rangeOfTraver = 100;
+    private static int _speed = 100;
     public EngineClassJumpingAlpha()
-        : base(100, 100) { }
+        : base(_speed) { }
 
     public override TypesOfEngines TypeOfIEngine => TypesOfEngines.EngineAlpha;
 
@@ -16,11 +16,7 @@ public class EngineClassJumpingAlpha : EngineClassJumping
         protected set => _speed = value;
     }
 
-    public override int RangeOfTravel
-    {
-        get => _rangeOfTraver;
-        protected set => _rangeOfTraver = 100;
-    }
+    public override int RangeOfTravel => _rangeOfTraver;
 
     public override int FuelForActivation => MatterForKm;
 

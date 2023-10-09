@@ -5,9 +5,10 @@ namespace Itmo.ObjectOrientedProgramming.Lab1.Obstacles;
 
 public class Asteroids : Obstacle
 {
+    private static int _damage = 10;
     private readonly int _damagePowerPercentage = 50;
     public Asteroids(Environment? environment)
-    : base(10)
+    : base(_damage)
     {
         if (environment is null) throw new ValueException(nameof(environment));
         if (environment.TypeOfEnvironment != TypesOfEnvironments.OrdinarySpace)

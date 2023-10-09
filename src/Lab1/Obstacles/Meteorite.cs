@@ -5,9 +5,10 @@ namespace Itmo.ObjectOrientedProgramming.Lab1.Obstacles;
 
 public class Meteorite : Obstacle
 {
+    private static int _damage = 20;
     private readonly int _damagePowerPercentage = 50;
     public Meteorite(Environment? environment)
-    : base(20)
+    : base(_damage)
     {
         if (environment is null) throw new ValueException(nameof(environment));
         if (environment.TypeOfEnvironment != TypesOfEnvironments.OrdinarySpace)

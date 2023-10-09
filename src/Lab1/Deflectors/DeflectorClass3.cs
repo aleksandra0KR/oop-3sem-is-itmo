@@ -2,9 +2,9 @@ namespace Itmo.ObjectOrientedProgramming.Lab1.Deflectors;
 
 public class DeflectorClass3 : Deflector
 {
-    private int _demadeCare = 400;
+    private static int _demadeCare = 400;
     public DeflectorClass3()
-        : base(400) { }
+        : base(_demadeCare) { }
     public override int DemageCare
     {
         get => _demadeCare;
