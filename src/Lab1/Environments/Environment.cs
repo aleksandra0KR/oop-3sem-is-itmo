@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.Linq;
 using Itmo.ObjectOrientedProgramming.Lab1.Engines;
 using Itmo.ObjectOrientedProgramming.Lab1.Obstacles;
 using Itmo.ObjectOrientedProgramming.Lab1.Ships;
@@ -29,11 +30,6 @@ public abstract class Environment
     public bool MatchEnvironmentAndEngine(Engine? engine)
     {
         if (engine is null) return false;
-        foreach (TypesOfEngines needed in NeededEngine)
-        {
-            if (engine.TypeOfIEngine == needed) return true;
-        }
-
-        return false;
+        return NeededEngine.Any(needed => needed == engine.TypeOfIEngine);
     }
 }
