@@ -3,7 +3,6 @@ using System.Collections.ObjectModel;
 using Itmo.ObjectOrientedProgramming.Lab1.Environments;
 using Itmo.ObjectOrientedProgramming.Lab1.Obstacles;
 using Itmo.ObjectOrientedProgramming.Lab1.Ships;
-using Environment = Itmo.ObjectOrientedProgramming.Lab1.Environments.Environment;
 
 namespace Itmo.ObjectOrientedProgramming.Lab1;
 
@@ -46,16 +45,16 @@ public class Route
         }
     }
 
-    public string Start()
+    public Result Start()
     {
         if (_allRoutes is null)
         {
-            return "Win! 0 min, 0 fuel";
+            return new Result("You Win");
         }
 
         if (_allShips is null)
         {
-            return "Loose! You lost your ship";
+            return new Result("Loose! You lost your ship");
         }
 
         int positionForShip = -1;
@@ -70,7 +69,7 @@ public class Route
             if (!(currentroute.MatchEnvironmentAndEngine(currentShip.EngineFirst) ||
                   currentroute.MatchEnvironmentAndEngine(currentShip.EngineSecond)))
             {
-                return "Loose! You lost your ship";
+                return new Result("Loose! You lost your ship");
             }
 
             // проверяем выдержит ли корабль урон
@@ -91,7 +90,7 @@ public class Route
                 // если дефлекторы и корпус уничтожены - поражение
                 if (obstracle.Damage > 0)
                 {
-                    return "Dead! Damage is fatale";
+                    return new Result("Dead! Damage is fatale");
                 }
             }
 
@@ -113,7 +112,7 @@ public class Route
             // проверяет сможет ли карабль пройти нужное расстояние канала и считаем топливо для прохождения
             if (currentroute.TypeOfEnvironment == TypesOfEnvironments.FoggySpace)
             {
-                if (currentShip.EngineSecond is null || currentShip.EngineSecond.RangeOfTravel < currentDistance) return "Loose! You lost your ship";
+                if (currentShip.EngineSecond is null || currentShip.EngineSecond.RangeOfTravel < currentDistance) return new Result("Loose! You lost your ship");
                 _amoutOfMatter += currentroute.CountAmountOfFuel(currentShip, currentDistance);
             }
             else
@@ -122,6 +121,6 @@ public class Route
             }
         }
 
-        return "We need " + _amoutOfFuel + "l of fuel and " + _amoutOfMatter + " of graviton matter";
+        return new Result("You Win", _amoutOfFuel, _amoutOfMatter);
     }
 }
