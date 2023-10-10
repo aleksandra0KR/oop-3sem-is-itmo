@@ -2,9 +2,7 @@ namespace Itmo.ObjectOrientedProgramming.Lab1.Deflectors;
 
 public class DeflectorClassNitrit : Deflector
 {
-    private static int _demadeCare = 900;
-    public DeflectorClassNitrit()
-        : base(_demadeCare) { }
+    private int _demadeCare = 900;
 
     public override int DemageCare
     {

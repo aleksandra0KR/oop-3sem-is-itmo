@@ -4,11 +4,6 @@ namespace Itmo.ObjectOrientedProgramming.Lab1.CaseStrengths;
 
 public abstract class CaseAbility
 {
-    protected CaseAbility(int damage)
-    {
-        DamageCare = damage;
-    }
-
     public abstract int DamageCare { get; protected set; }
     public bool IsWorking { get; private set;  } = true;
     public abstract TypesOfCases TypeOfCase { get; }

@@ -3,9 +3,7 @@ namespace Itmo.ObjectOrientedProgramming.Lab1.Engines;
 public class EngineClassC : Engine
 {
     private const int FuelForKm = 10;
-    private static int _speed = 100;
-    public EngineClassC()
-        : base(_speed) { }
+    private int _speed = 100;
 
     public override int FuelForActivation => FuelForKm;
 

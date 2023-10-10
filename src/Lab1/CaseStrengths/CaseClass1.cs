@@ -2,9 +2,7 @@ namespace Itmo.ObjectOrientedProgramming.Lab1.CaseStrengths;
 
 public class CaseClass1 : CaseAbility
 {
-    private static int _demadeCare = 10;
-    public CaseClass1()
-    : base(_demadeCare) { }
+    private int _demadeCare = 10;
 
     public override int DamageCare
     {

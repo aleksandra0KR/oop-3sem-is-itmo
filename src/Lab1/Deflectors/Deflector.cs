@@ -4,11 +4,6 @@ namespace Itmo.ObjectOrientedProgramming.Lab1.Deflectors;
 
 public abstract class Deflector
 {
-    protected Deflector(int demagecare)
-    {
-        DemageCare = demagecare;
-    }
-
     public abstract int DemageCare { get; protected set; }
     public bool IsWorking { get; protected set;  } = true;
     public abstract TypesOfDeflectors TypeOfDeflector { get; }

@@ -4,15 +4,10 @@ namespace Itmo.ObjectOrientedProgramming.Lab1.Engines;
 public class EngineClassJumpingOmega : EngineClassJumping
 {
     private const int Matterforkm = 20;
-    private static int _rangeOfTraver = 10000;
-    private static int _speed = 100;
-    public EngineClassJumpingOmega()
-        : base(_speed) { }
+    private int _rangeOfTraver = 10000;
+    private int _speed = 100;
 
-    public override TypesOfEngines TypeOfIEngine
-    {
-        get => TypesOfEngines.EngineOmega;
-    }
+    public override TypesOfEngines TypeOfIEngine => TypesOfEngines.EngineOmega;
 
     public override int Speed
     {

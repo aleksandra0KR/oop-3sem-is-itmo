@@ -23,11 +23,11 @@ public class AntimatterFlares : Obstacle
 
     public override int CountDamageToCase()
     {
-        return int.MaxValue;
+        return 10000;
     }
 
     public override int CountDamageToDeflector(TypesOfDeflectors typeOfDeflector)
     {
-        return typeOfDeflector != TypesOfDeflectors.FotonDeflector ? int.MaxValue : Damage;
+        return typeOfDeflector != TypesOfDeflectors.FotonDeflector ? 10000 : Damage;
     }
 }
