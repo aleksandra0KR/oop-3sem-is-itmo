@@ -76,7 +76,7 @@ public class Tests
             Engine engine4 = new EngineClassE();
             EngineClassJumping engine42 = new EngineClassJunpingGamma();
             CaseAbility case4 = new CaseClass2();
-            Deflector deflector4 = new DeflectorClassFoton();
+            Deflector deflector4 = new DeflectorClassFoton(new DeflectorClass3());
             Ship ship4 = new Vaclas(engine4, engine42, deflector4, case4);
 
             var fourthShips = new Collection<Ship> { ship4 };
@@ -136,7 +136,7 @@ public class Tests
         var obstacles7 = new Collection<Obstacle>() { obstacle7 };
         environment7.AddObstacles(obstacles7);
         Engine engine71 = new EngineClassE();
-        Deflector deflector7 = new DeflectorClassNitrit();
+        Deflector deflector7 = new DeflectorClassNitrit(new DeflectorClass3());
         CaseAbility case7 = new CaseClass2();
         Ship ship7 = new Meredian(engine71, deflector7, case7);
 
@@ -289,7 +289,7 @@ public class Tests
             };
             Engine engine11 = new EngineClassE();
             EngineClassJumping engine12 = new EngineClassJunpingGamma();
-            Deflector deflector1 = new DeflectorClassFoton();
+            Deflector deflector1 = new DeflectorClassFoton(new DeflectorClass3());
             CaseAbility case1 = new CaseClass2();
             Ship ship1 = new Vaclas(engine11, engine12, deflector1, case1);
             var firstShips = new Collection<Ship> { ship1, ship1 };
