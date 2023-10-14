@@ -9,6 +9,4 @@ public class CaseClass3 : CaseAbility
         get => _demadeCare;
         protected set => _demadeCare = value;
     }
-
-    public override TypesOfCases TypeOfCase => TypesOfCases.ThirdCase;
 }

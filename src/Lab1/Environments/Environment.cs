@@ -1,3 +1,4 @@
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Itmo.ObjectOrientedProgramming.Lab1.Engines;
@@ -8,10 +9,9 @@ namespace Itmo.ObjectOrientedProgramming.Lab1.Environments;
 
 public abstract class Environment
 {
-    public abstract TypesOfEnvironments TypeOfEnvironment { get; }
     public Collection<Obstacle> Obstacles { get; } = new();
 
-    protected abstract Collection<TypesOfEngines> NeededEngine { get; }
+    protected abstract Collection<Type> NeededEngine { get; }
 
     public abstract int CountAmountOfFuel(Ship ship, int distance);
     public void AddObstacles(Collection<Obstacle> obstacles)
@@ -30,6 +30,6 @@ public abstract class Environment
     public bool MatchEnvironmentAndEngine(Engine? engine)
     {
         if (engine is null) return false;
-        return NeededEngine.Any(needed => needed == engine.TypeOfIEngine);
+        return NeededEngine.Any(needed => needed == engine.GetType());
     }
 }

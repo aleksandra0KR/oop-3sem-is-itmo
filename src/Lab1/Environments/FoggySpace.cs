@@ -1,3 +1,4 @@
+using System;
 using System.Collections.ObjectModel;
 using Itmo.ObjectOrientedProgramming.Lab1.Engines;
 using Itmo.ObjectOrientedProgramming.Lab1.Ships;
@@ -12,9 +13,7 @@ public class FoggySpace : Environment
         LenghtOfChannels = lenghtOfChannels;
     }
 
-    public override TypesOfEnvironments TypeOfEnvironment => TypesOfEnvironments.FoggySpace;
-
-    protected override Collection<TypesOfEngines> NeededEngine { get; } = new() { TypesOfEngines.EngineAlpha, TypesOfEngines.EngineOmega, TypesOfEngines.EngineGamma };
+    protected override Collection<Type> NeededEngine { get; } = new() { typeof(EngineClassJumpingAlpha), typeof(EngineClassJumpingOmega), typeof(EngineClassJunpingGamma) };
     private int NumberOfChannels { get; }
     private int LenghtOfChannels { get; }
 

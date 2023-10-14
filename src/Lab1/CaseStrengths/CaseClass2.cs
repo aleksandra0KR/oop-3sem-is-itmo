@@ -9,6 +9,4 @@ public class CaseClass2 : CaseAbility
         get => _demadeCare;
         protected set => _demadeCare = value;
     }
-
-    public override TypesOfCases TypeOfCase => TypesOfCases.SecondCase;
 }

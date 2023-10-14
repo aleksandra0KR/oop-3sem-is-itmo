@@ -9,6 +9,4 @@ public class DeflectorClass1 : Deflector
         get => _demadeCare;
         protected set => _demadeCare = value;
     }
-
-    public override TypesOfDeflectors TypeOfDeflector => TypesOfDeflectors.FirstDeflector;
 }

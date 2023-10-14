@@ -15,8 +15,6 @@ public class EngineClassE : Engine
         protected set => _speed = value;
     }
 
-    public override TypesOfEngines TypeOfIEngine => TypesOfEngines.EngineE;
-
     public override int CountFuelConsumption(int distance)
     {
         int time = 1;

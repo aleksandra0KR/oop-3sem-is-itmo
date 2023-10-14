@@ -6,13 +6,11 @@ public abstract class Deflector
 {
     public abstract int DemageCare { get; protected set; }
     public bool IsWorking { get; protected set;  } = true;
-    public abstract TypesOfDeflectors TypeOfDeflector { get; }
-
     public void TakeDamage(Obstacle obstacle)
     {
         if (obstacle is null) return;
         if (!IsWorking) return;
-        DemageCare -= obstacle.CountDamageToDeflector(TypeOfDeflector);
+        DemageCare -= obstacle.CountDamageToDeflector(GetType());
         if (DemageCare >= 0)
         {
             obstacle.Damage = 0;

@@ -9,7 +9,6 @@ public class DeflectorClassFoton : DecoratorForDeflector
         _demadeCare = 900 + base.DemageCare;
     }
 
-    public override TypesOfDeflectors TypeOfDeflector => TypesOfDeflectors.FotonDeflector;
     public override int DemageCare
     {
         get => _demadeCare;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.ObjectModel;
 using Itmo.ObjectOrientedProgramming.Lab1.Engines;
 using Itmo.ObjectOrientedProgramming.Lab1.Ships;
@@ -6,9 +7,7 @@ namespace Itmo.ObjectOrientedProgramming.Lab1.Environments;
 
 public class NebulaeOfNitrineParticlesSpace : Environment
 {
-    public override TypesOfEnvironments TypeOfEnvironment => TypesOfEnvironments.NebulaeOdNitrineParticlesSpacce;
-
-    protected override Collection<TypesOfEngines> NeededEngine { get; } = new() { TypesOfEngines.EngineE };
+    protected override Collection<Type> NeededEngine { get; } = new() { typeof(EngineClassE) };
 
     public override int CountAmountOfFuel(Ship ship, int distance)
     {

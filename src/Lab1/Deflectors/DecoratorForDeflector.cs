@@ -8,8 +8,6 @@ public abstract class DecoratorForDeflector : Deflector
         this.deflector = deflector;
     }
 
-    public override TypesOfDeflectors TypeOfDeflector => deflector.TypeOfDeflector;
-
     public override int DemageCare => deflector.DemageCare;
 
     public void SetDeflector(Deflector deflector)

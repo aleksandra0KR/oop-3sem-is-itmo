@@ -6,9 +6,6 @@ public class EngineClassJumpingOmega : EngineClassJumping
     private const int Matterforkm = 20;
     private int _rangeOfTraver = 10000;
     private int _speed = 100;
-
-    public override TypesOfEngines TypeOfIEngine => TypesOfEngines.EngineOmega;
-
     public override int Speed
     {
         get => _speed;

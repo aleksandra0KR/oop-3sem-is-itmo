@@ -9,7 +9,6 @@ public class DeflectorClassNitrit : DecoratorForDeflector
         _demadeCare = 30000 + base.DemageCare;
     }
 
-    public override TypesOfDeflectors TypeOfDeflector => TypesOfDeflectors.NitritDeflector;
     public override int DemageCare
     {
         get => _demadeCare;

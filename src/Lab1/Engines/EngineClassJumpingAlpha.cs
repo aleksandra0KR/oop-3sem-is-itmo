@@ -5,9 +5,6 @@ public class EngineClassJumpingAlpha : EngineClassJumping
     private const int MatterForKm = 10;
     private int _rangeOfTraver = 100;
     private int _speed = 100;
-
-    public override TypesOfEngines TypeOfIEngine => TypesOfEngines.EngineAlpha;
-
     public override int Speed
     {
         get => _speed;

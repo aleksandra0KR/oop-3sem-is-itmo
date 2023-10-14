@@ -13,8 +13,6 @@ public class EngineClassC : Engine
         protected set => _speed = value;
     }
 
-    public override TypesOfEngines TypeOfIEngine => TypesOfEngines.EngineC;
-
     public override int CountFuelConsumption(int distance)
     {
         int neededfuel = distance / Speed * FuelForKm;

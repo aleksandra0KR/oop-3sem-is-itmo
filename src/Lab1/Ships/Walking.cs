@@ -8,14 +8,14 @@ public class Walking : Ship
     public Walking(Engine engineFirst, CaseAbility caseAbility)
     {
         if (engineFirst is null) throw new ValueException(nameof(engineFirst));
-        if (engineFirst.TypeOfIEngine != TypesOfEngines.EngineC)
+        if (engineFirst.GetType() != typeof(EngineClassC))
         {
             throw new TypeExeption("Not the needed type of Engine");
         }
 
         EngineFirst = engineFirst;
         if (caseAbility is null) throw new ValueException(nameof(caseAbility));
-        if (caseAbility.TypeOfCase != TypesOfCases.FirstCase)
+        if (caseAbility.GetType() != typeof(CaseClass1))
         {
             throw new TypeExeption("Not the needed type of Case");
         }

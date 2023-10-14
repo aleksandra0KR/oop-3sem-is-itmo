@@ -5,9 +5,6 @@ public class EngineClassJunpingGamma : EngineClassJumping
     private const int MatterForKM = 30;
     private int _speed = 100;
     private int _rangeoftraver = int.MaxValue;
-
-    public override TypesOfEngines TypeOfIEngine => TypesOfEngines.EngineGamma;
-
     public override int Speed
     {
         get => _speed;

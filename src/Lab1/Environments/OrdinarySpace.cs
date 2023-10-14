@@ -1,3 +1,4 @@
+using System;
 using System.Collections.ObjectModel;
 using Itmo.ObjectOrientedProgramming.Lab1.Engines;
 using Itmo.ObjectOrientedProgramming.Lab1.Ships;
@@ -6,9 +7,7 @@ namespace Itmo.ObjectOrientedProgramming.Lab1.Environments;
 
 public class OrdinarySpace : Environment
 {
-    public override TypesOfEnvironments TypeOfEnvironment => TypesOfEnvironments.OrdinarySpace;
-
-    protected override Collection<TypesOfEngines> NeededEngine { get; } = new() { TypesOfEngines.EngineC, TypesOfEngines.EngineE };
+    protected override Collection<Type> NeededEngine { get; } = new Collection<Type>() { typeof(EngineClassC), typeof(EngineClassE) };
 
     public override int CountAmountOfFuel(Ship ship, int distance)
     {

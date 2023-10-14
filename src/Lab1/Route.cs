@@ -110,7 +110,7 @@ public class Route
             }
 
             // проверяет сможет ли карабль пройти нужное расстояние канала и считаем топливо для прохождения
-            if (currentroute.TypeOfEnvironment == TypesOfEnvironments.FoggySpace)
+            if (currentroute.GetType() == typeof(FoggySpace))
             {
                 if (currentShip.EngineSecond is null || currentShip.EngineSecond.RangeOfTravel < currentDistance) return new Result("Loose! You lost your ship");
                 _amoutOfMatter += currentroute.CountAmountOfFuel(currentShip, currentDistance);

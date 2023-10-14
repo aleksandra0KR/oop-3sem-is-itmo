@@ -1,5 +1,6 @@
-using Itmo.ObjectOrientedProgramming.Lab1.Deflectors;
+using System;
 using Itmo.ObjectOrientedProgramming.Lab1.Environments;
+using Environment = Itmo.ObjectOrientedProgramming.Lab1.Environments.Environment;
 
 namespace Itmo.ObjectOrientedProgramming.Lab1.Obstacles;
 
@@ -11,7 +12,7 @@ public class Asteroids : Obstacle
     : base(_damage)
     {
         if (environment is null) throw new ValueException(nameof(environment));
-        if (environment.TypeOfEnvironment != TypesOfEnvironments.OrdinarySpace)
+        if (environment.GetType() != typeof(OrdinarySpace))
         {
             throw new TypeExeption("Not the needed type of Environment");
         }
@@ -26,7 +27,7 @@ public class Asteroids : Obstacle
         return Damage / _damagePowerPercentage;
     }
 
-    public override int CountDamageToDeflector(TypesOfDeflectors typeOfDeflector)
+    public override int CountDamageToDeflector(Type deflector)
     {
         return Damage;
     }

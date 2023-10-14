@@ -6,7 +6,6 @@ public abstract class CaseAbility
 {
     public abstract int DamageCare { get; protected set; }
     public bool IsWorking { get; private set;  } = true;
-    public abstract TypesOfCases TypeOfCase { get; }
 
     public void TakeDamage(Obstacle obstacle)
     {
