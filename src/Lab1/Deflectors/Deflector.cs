@@ -10,7 +10,7 @@ public abstract class Deflector
     {
         if (obstacle is null) return;
         if (!IsWorking) return;
-        DemageCare -= obstacle.CountDamageToDeflector(GetType());
+        DemageCare -= obstacle.CountDamageToDeflector(this);
         if (DemageCare >= 0)
         {
             obstacle.Damage = 0;

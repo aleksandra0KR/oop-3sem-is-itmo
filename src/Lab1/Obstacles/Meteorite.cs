@@ -1,4 +1,4 @@
-using System;
+using Itmo.ObjectOrientedProgramming.Lab1.Deflectors;
 using Itmo.ObjectOrientedProgramming.Lab1.Environments;
 using Environment = Itmo.ObjectOrientedProgramming.Lab1.Environments.Environment;
 
@@ -27,7 +27,7 @@ public class Meteorite : Obstacle
         return Damage / _damagePowerPercentage;
     }
 
-    public override int CountDamageToDeflector(Type deflector)
+    public override int CountDamageToDeflector(Deflector deflector)
     {
         return Damage;
     }

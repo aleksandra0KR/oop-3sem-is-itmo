@@ -1,4 +1,3 @@
-using System;
 using Itmo.ObjectOrientedProgramming.Lab1.Deflectors;
 using Itmo.ObjectOrientedProgramming.Lab1.Environments;
 using Environment = Itmo.ObjectOrientedProgramming.Lab1.Environments.Environment;
@@ -28,8 +27,8 @@ public class SpaceWhales : Obstacle
         return int.MaxValue;
     }
 
-    public override int CountDamageToDeflector(Type deflector)
+    public override int CountDamageToDeflector(Deflector deflector)
     {
-        return deflector == typeof(DeflectorClassNitrit) ? Damage : _damageToNotNitritDeflector;
+        return deflector is DeflectorClassNitrit ? Damage : _damageToNotNitritDeflector;
     }
 }

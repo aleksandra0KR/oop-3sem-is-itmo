@@ -1,4 +1,3 @@
-using System;
 using Itmo.ObjectOrientedProgramming.Lab1.Deflectors;
 using Itmo.ObjectOrientedProgramming.Lab1.Environments;
 using Environment = Itmo.ObjectOrientedProgramming.Lab1.Environments.Environment;
@@ -28,8 +27,8 @@ public class AntimatterFlares : Obstacle
         return 10000;
     }
 
-    public override int CountDamageToDeflector(Type deflector)
+    public override int CountDamageToDeflector(Deflector deflector)
     {
-        return deflector != typeof(DeflectorClassFoton) ? 10000 : Damage;
+        return deflector is not DeflectorClassFoton ? 10000 : Damage;
     }
 }
