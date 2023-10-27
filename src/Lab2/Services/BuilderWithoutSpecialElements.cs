@@ -1,3 +1,5 @@
+using System.Linq;
+
 namespace Itmo.ObjectOrientedProgramming.Lab2;
 
 public class BuilderWithoutSpecialElements : Builder
@@ -31,13 +33,10 @@ public class BuilderWithoutSpecialElements : Builder
 
         if (Computer.Bios?.NeededCPU is not null)
         {
-            foreach (string neededCpu in Computer.Bios.NeededCPU)
+            if (Computer.Bios.NeededCPU.Any(neededCpu => neededCpu == cpu.TypeOfCPU))
             {
-                if (neededCpu == cpu.TypeOfCPU)
-                {
-                    Computer.Cpu = cpu;
-                    return;
-                }
+                Computer.Cpu = cpu;
+                return;
             }
         }
 
@@ -69,7 +68,7 @@ public class BuilderWithoutSpecialElements : Builder
 
     public override void SetRAM(RandomAccessMemory? randomAccessMemory)
     {
-        if (randomAccessMemory is null) throw new ValueException("Empty Cooling RAM");
+        if (randomAccessMemory is null) throw new ValueException("Empty RAM");
         if (randomAccessMemory.Frequency < Computer.Cpu?.MaxSupportedMemoryFrequencies)
         {
             Res.StatusForRAM = "RAM frequency not enough for CPU, disclaimer of warranty";
@@ -81,16 +80,13 @@ public class BuilderWithoutSpecialElements : Builder
 
     public override void SetCase(CaseOfComputer? caseOfComputer)
     {
-        if (caseOfComputer is null) throw new ValueException("Empty Cooling Case");
+        if (caseOfComputer is null) throw new ValueException("Empty Case");
         if (Computer.Motherboard?.FormFactor is not null)
         {
-            foreach (string neededForm in caseOfComputer.DimensionOfMotherBoard)
+            if (caseOfComputer.DimensionOfMotherBoard.Any(neededForm => neededForm == Computer.Motherboard.FormFactor))
             {
-                if (neededForm == Computer.Motherboard.FormFactor)
-                {
-                    Computer.CaseOfComputer = caseOfComputer;
-                    return;
-                }
+                Computer.CaseOfComputer = caseOfComputer;
+                return;
             }
         }
 

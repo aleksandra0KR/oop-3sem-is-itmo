@@ -2,7 +2,7 @@ namespace Itmo.ObjectOrientedProgramming.Lab2;
 
 public abstract class Builder
 {
-    public Computer Computer { get; private set; } = new();
+    public Computer Computer { get; } = new();
     public ResultStatus Res { get; private set; } = new();
 
     public ResultStatus MakeComputer(Motherboard? motherboard, BIOS? bios, CPU? cpu, ProcessorCoolingSystem? processorCoolingSystem, RandomAccessMemory? randomAccessMemory, CaseOfComputer? caseOfComputer, PowerUnit? powerUnit, SSD? ssd, Hdd? hdd, VideoCard? videoCard, WiFI? wifi)
