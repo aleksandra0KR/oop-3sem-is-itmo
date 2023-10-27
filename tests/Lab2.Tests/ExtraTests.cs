@@ -30,15 +30,17 @@ public class ExtraTests
 
     [Fact]
 
-    // test for new video card based on old one
+    // test for new computer card based on old one
     private void CreatingNewComputerBasesOnOld()
     {
-        var repo = new CommonRepo();
+        CommonRepo repo = CommonRepo.Instance;
         var builder = new BuilderWithoutSpecialElements();
         builder.MakeComputer(repo.MotherboardRepo.MotherboardList[0], repo.BiosRepo.BiosList[0], repo.CpuRepo.CpuList[1], repo.ProcessorCoolingSystemRepo.ProcessorCoolingSystemList[1], repo.RamRepo.RamList[0], repo.CaseRepo.CaseList[0], repo.PowerUnitRepo.PowerUnitList[0], repo.SsdRepo.SSDList[0], repo.HddRepo.HddList[0], null, null);
         Builder newBuilder = builder.CloneComputer();
         newBuilder.SetCpu(repo.CpuRepo.CpuList[0]);
         newBuilder.SetCoolingSystem(repo.ProcessorCoolingSystemRepo.ProcessorCoolingSystemList[0]);
+        newBuilder.SetRAM(newBuilder.Computer.RAM);
+        newBuilder.SetPowerUnit(newBuilder.Computer.PowerUnit);
         Assert.Equal("Cooling System is too week for your CPU TDP, but will work for a while", builder.Res.StatusForProcessorCoolingSystem);
         Assert.Equal("Everything is great. Your computer available!", newBuilder.Res.StatusForPowerUnit);
     }
@@ -48,7 +50,7 @@ public class ExtraTests
     // test for computer with wifi and video card
     private void ComputerWithWIFIAndVideoCard()
     {
-        var repo = new CommonRepo();
+        CommonRepo repo = CommonRepo.Instance;
         var builder = new BuilderWithExcesses();
         ResultStatus res = builder.MakeComputer(repo.MotherboardRepo.MotherboardList[0], repo.BiosRepo.BiosList[0], repo.CpuRepo.CpuList[0], repo.ProcessorCoolingSystemRepo.ProcessorCoolingSystemList[0], repo.RamRepo.RamList[0], repo.CaseRepo.CaseList[0], repo.PowerUnitRepo.PowerUnitList[0], repo.SsdRepo.SSDList[0], repo.HddRepo.HddList[0], repo.VideoCardRepo.VideoCards[0], repo.WifiRepo.WiFiLIst[0]);
         Assert.Equal("Everything is great. Your computer available!", res.StatusOfComputer);
