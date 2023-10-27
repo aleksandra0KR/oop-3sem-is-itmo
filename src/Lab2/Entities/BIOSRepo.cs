@@ -17,7 +17,7 @@ public class BIOSRepo
 
     public void AddNewBIOS(BIOS bios)
     {
-        if (bios == null) throw new ValueException("Empty BIOS");
+        if (bios is null) throw new ValueException("Empty BIOS");
         BiosList.Add(bios);
     }
 }
