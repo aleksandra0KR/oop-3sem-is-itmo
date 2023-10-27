@@ -2,6 +2,10 @@ namespace Itmo.ObjectOrientedProgramming.Lab2.Repositories;
 
 public class CommonRepo
 {
+    private static CommonRepo? _instance;
+    private CommonRepo()
+    { }
+    public static CommonRepo Instance => _instance ??= new CommonRepo();
     public MotherboardRepo MotherboardRepo { get; } = MotherboardRepo.Instance;
     public CPURepo CpuRepo { get; } = CPURepo.Instance;
     public BIOSRepo BiosRepo { get; } = BIOSRepo.Instance;
