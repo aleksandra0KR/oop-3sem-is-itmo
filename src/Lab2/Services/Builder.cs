@@ -5,21 +5,6 @@ public abstract class Builder
     public Computer Computer { get; } = new();
     public ResultStatus Res { get; private set; } = new();
 
-    public ResultStatus MakeComputer(Motherboard? motherboard, BIOS? bios, CPU? cpu, ProcessorCoolingSystem? processorCoolingSystem, RandomAccessMemory? randomAccessMemory, CaseOfComputer? caseOfComputer, PowerUnit? powerUnit, SSD? ssd, Hdd? hdd, VideoCard? videoCard, WiFI? wifi)
-    {
-        SetMotherboard(motherboard);
-        SetBIOS(bios);
-        SetCpu(cpu);
-        SetCoolingSystem(processorCoolingSystem);
-        SetRAM(randomAccessMemory);
-        SetCase(caseOfComputer);
-        SetPowerUnit(powerUnit);
-        SetVideoCard(videoCard);
-        SetWiFi(wifi);
-        SetDrive(ssd, hdd);
-        return Res;
-    }
-
     public Builder CloneComputer()
     {
         Builder builder = new BuilderWithoutSpecialElements();

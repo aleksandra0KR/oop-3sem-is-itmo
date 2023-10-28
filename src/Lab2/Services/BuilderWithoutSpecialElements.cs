@@ -4,6 +4,19 @@ namespace Itmo.ObjectOrientedProgramming.Lab2;
 
 public class BuilderWithoutSpecialElements : Builder
 {
+    public ResultStatus MakeComputer(Motherboard? motherboard, BIOS? bios, CPU? cpu, ProcessorCoolingSystem? processorCoolingSystem, RandomAccessMemory? randomAccessMemory, CaseOfComputer? caseOfComputer, PowerUnit? powerUnit, SSD? ssd, Hdd? hdd)
+    {
+        SetMotherboard(motherboard);
+        SetBIOS(bios);
+        SetCpu(cpu);
+        SetCoolingSystem(processorCoolingSystem);
+        SetRAM(randomAccessMemory);
+        SetCase(caseOfComputer);
+        SetPowerUnit(powerUnit);
+        SetDrive(ssd, hdd);
+        return Res;
+    }
+
     public override void SetMotherboard(Motherboard? motherboard)
     {
         if (motherboard is null) throw new ValueException("Empty motherboard");
