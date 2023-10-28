@@ -2,16 +2,18 @@ using System.Collections.ObjectModel;
 
 namespace Itmo.ObjectOrientedProgramming.Lab2.Repositories;
 
-public class HDDRepo
+public class HDDRepository
 {
-    private static HDDRepo? _instance;
-    private HDDRepo()
+    private static HDDRepository? _instance;
+    private HDDRepository() { }
+
+    public static HDDRepository Instance => _instance ??= new HDDRepository();
+    public Collection<Hdd> HddList { get; } = new();
+
+    public void Faker()
     {
         HddList.Add(new Hdd(1, 6, 6));
     }
-
-    public static HDDRepo Instance => _instance ??= new HDDRepo();
-    public Collection<Hdd> HddList { get; } = new();
 
     public void AddNewHDD(Hdd hdd)
     {

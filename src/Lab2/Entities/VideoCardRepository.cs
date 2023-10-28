@@ -2,17 +2,20 @@ using System.Collections.ObjectModel;
 
 namespace Itmo.ObjectOrientedProgramming.Lab2.Repositories;
 
-public class VideoCardRepo
+public class VideoCardRepository
 {
-    private static VideoCardRepo? _instance;
+    private static VideoCardRepository? _instance;
 
-    private VideoCardRepo()
+    private VideoCardRepository() { }
+
+    public static VideoCardRepository Instance => _instance ??= new VideoCardRepository();
+    public Collection<VideoCard> VideoCards { get; } = new();
+
+    public void Faker()
     {
         VideoCards.Add(new VideoCard(new Dimensions(300, 300), 20, 3, 50, 50));
     }
 
-    public static VideoCardRepo Instance => _instance ??= new VideoCardRepo();
-    public Collection<VideoCard> VideoCards { get; } = new();
     public void AddNewVideoCard(VideoCard videoCard)
     {
         if (videoCard is null) throw new ValueException("Empty Video Card");

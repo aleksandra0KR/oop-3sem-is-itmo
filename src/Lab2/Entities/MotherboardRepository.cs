@@ -2,17 +2,19 @@ using System.Collections.ObjectModel;
 
 namespace Itmo.ObjectOrientedProgramming.Lab2.Repositories;
 
-public class MotherboardRepo
+public class MotherboardRepository
 {
-    private static MotherboardRepo? _instance;
+    private static MotherboardRepository? _instance;
 
-    private MotherboardRepo()
+    private MotherboardRepository() { }
+
+    public static MotherboardRepository Instance => _instance ??= new MotherboardRepository();
+    public Collection<Motherboard> MotherboardList { get; } = new();
+
+    public void Faker()
     {
         MotherboardList.Add(new Motherboard("LGA 1200", 16, 4, 3200, 4, 2, "Micro-ATX", 2.0, "AMI"));
     }
-
-    public static MotherboardRepo Instance => _instance ??= new MotherboardRepo();
-    public Collection<Motherboard> MotherboardList { get; } = new();
 
     public void AddNewMotherboard(Motherboard motherboard)
     {

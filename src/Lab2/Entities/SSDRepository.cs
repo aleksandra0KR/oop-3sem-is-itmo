@@ -2,16 +2,18 @@ using System.Collections.ObjectModel;
 
 namespace Itmo.ObjectOrientedProgramming.Lab2.Repositories;
 
-public class SSDRepo
+public class SSDRepository
 {
-    private static SSDRepo? _instance;
-    private SSDRepo()
+    private static SSDRepository? _instance;
+    private SSDRepository() { }
+
+    public static SSDRepository Instance => _instance ??= new SSDRepository();
+    public Collection<SSD> SSDList { get; } = new();
+
+    public void Faker()
     {
         SSDList.Add(new SSD("Sata", 400, 900, 100));
     }
-
-    public static SSDRepo Instance => _instance ??= new SSDRepo();
-    public Collection<SSD> SSDList { get; } = new();
 
     public void AddNewSSD(SSD ssd)
     {

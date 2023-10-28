@@ -2,18 +2,20 @@ using System.Collections.ObjectModel;
 
 namespace Itmo.ObjectOrientedProgramming.Lab2.Repositories;
 
-public class PowerUnitRepo
+public class PowerUnitRepository
 {
-    private static PowerUnitRepo? _instance;
+    private static PowerUnitRepository? _instance;
 
-    private PowerUnitRepo()
+    private PowerUnitRepository() { }
+
+    public static PowerUnitRepository Instance => _instance ??= new PowerUnitRepository();
+    public Collection<PowerUnit> PowerUnitList { get;  } = new();
+
+    public void Faker()
     {
         PowerUnitList.Add(new PowerUnit(1000));
         PowerUnitList.Add(new PowerUnit(450));
     }
-
-    public static PowerUnitRepo Instance => _instance ??= new PowerUnitRepo();
-    public Collection<PowerUnit> PowerUnitList { get;  } = new();
 
     public void AddNewPowerUnit(PowerUnit powerUnit)
     {

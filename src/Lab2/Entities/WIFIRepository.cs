@@ -2,17 +2,19 @@ using System.Collections.ObjectModel;
 
 namespace Itmo.ObjectOrientedProgramming.Lab2.Repositories;
 
-public class WIFIRepo
+public class WIFIRepository
 {
-    private static WIFIRepo? _instance;
+    private static WIFIRepository? _instance;
 
-    private WIFIRepo()
+    private WIFIRepository() { }
+
+    public static WIFIRepository Instance => _instance ??= new WIFIRepository();
+    public Collection<WiFI> WiFiLIst { get; } = new();
+
+    public void Faker()
     {
         WiFiLIst.Add(new WiFI(4, 3, true, 50));
     }
-
-    public static WIFIRepo Instance => _instance ??= new WIFIRepo();
-    public Collection<WiFI> WiFiLIst { get; } = new();
 
     public void AddNewWiFi(WiFI wifi)
     {

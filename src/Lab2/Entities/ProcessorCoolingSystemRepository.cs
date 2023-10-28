@@ -2,11 +2,16 @@ using System.Collections.ObjectModel;
 
 namespace Itmo.ObjectOrientedProgramming.Lab2.Repositories;
 
-public class ProcessorCoolingSystemRepo
+public class ProcessorCoolingSystemRepository
 {
-    private static ProcessorCoolingSystemRepo? _instance;
+    private static ProcessorCoolingSystemRepository? _instance;
 
-    private ProcessorCoolingSystemRepo()
+    private ProcessorCoolingSystemRepository() { }
+
+    public static ProcessorCoolingSystemRepository Instance => _instance ??= new ProcessorCoolingSystemRepository();
+    public Collection<ProcessorCoolingSystem> ProcessorCoolingSystemList { get; } = new();
+
+    public void Faker()
     {
         ProcessorCoolingSystemList.Add(new ProcessorCoolingSystem(
             new Dimensions(52, 110),
@@ -25,9 +30,6 @@ public class ProcessorCoolingSystemRepo
             },
             95));
     }
-
-    public static ProcessorCoolingSystemRepo Instance => _instance ??= new ProcessorCoolingSystemRepo();
-    public Collection<ProcessorCoolingSystem> ProcessorCoolingSystemList { get; } = new();
 
     public void AddNewCoolingSystem(ProcessorCoolingSystem processorCoolingSystem)
     {
