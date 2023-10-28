@@ -10,10 +10,18 @@ public class Tests
     // first test
     private void EverythingIsFine()
     {
-        CommonRepo repo = CommonRepo.Instance;
-        var builder = new BuilderWithoutSpecialElements();
-        ResultStatus res = builder.MakeComputer(repo.MotherboardRepo.MotherboardList[0], repo.BiosRepo.BiosList[0], repo.CpuRepo.CpuList[0], repo.ProcessorCoolingSystemRepo.ProcessorCoolingSystemList[0], repo.RamRepo.RamList[0], repo.CaseRepo.CaseList[0], repo.PowerUnitRepo.PowerUnitList[0], repo.SsdRepo.SSDList[0], repo.HddRepo.HddList[0]);
-        Assert.Equal("Everything is great. Your computer available!", res.StatusOfComputer);
+        CommonRepository repository = CommonRepository.Instance;
+        repository.Faker();
+        var builder = new Builder();
+        builder.SetMotherboard(repository.MotherboardRepository.MotherboardList[0]);
+        builder.SetBIOS(repository.BiosRepository.BiosList[0]);
+        builder.SetCpu(repository.CpuRepository.CpuList[0]);
+        builder.SetCoolingSystem(repository.ProcessorCoolingSystemRepository.ProcessorCoolingSystemList[0]);
+        builder.SetRAM(repository.RamRepository.RamList[0]);
+        builder.SetCase(repository.CaseRepository.CaseList[0]);
+        builder.SetPowerUnit(repository.PowerUnitRepository.PowerUnitList[0]);
+        builder.SetDrive(repository.SsdRepository.SSDList[0],  repository.HddRepository.HddList[0]);
+        Assert.Equal("Everything is great. Your computer available!", builder.Res.StatusOfComputer);
     }
 
     [Fact]
@@ -21,10 +29,18 @@ public class Tests
     // second test
     private void WorkingButConsumptionHeight()
     {
-        CommonRepo repo = CommonRepo.Instance;
-        var builder = new BuilderWithoutSpecialElements();
-        ResultStatus res = builder.MakeComputer(repo.MotherboardRepo.MotherboardList[0], repo.BiosRepo.BiosList[0], repo.CpuRepo.CpuList[1], repo.ProcessorCoolingSystemRepo.ProcessorCoolingSystemList[0], repo.RamRepo.RamList[0], repo.CaseRepo.CaseList[0], repo.PowerUnitRepo.PowerUnitList[1], repo.SsdRepo.SSDList[0], repo.HddRepo.HddList[0]);
-        Assert.Equal("Everything is working. But Consumption little too height!", res.StatusForPowerUnit);
+        CommonRepository repository = CommonRepository.Instance;
+        repository.Faker();
+        var builder = new Builder();
+        builder.SetMotherboard(repository.MotherboardRepository.MotherboardList[0]);
+        builder.SetBIOS(repository.BiosRepository.BiosList[0]);
+        builder.SetCpu(repository.CpuRepository.CpuList[1]);
+        builder.SetCoolingSystem(repository.ProcessorCoolingSystemRepository.ProcessorCoolingSystemList[0]);
+        builder.SetRAM(repository.RamRepository.RamList[0]);
+        builder.SetCase(repository.CaseRepository.CaseList[0]);
+        builder.SetPowerUnit(repository.PowerUnitRepository.PowerUnitList[1]);
+        builder.SetDrive(repository.SsdRepository.SSDList[0],  repository.HddRepository.HddList[0]);
+        Assert.Equal("Everything is working. But Consumption little too height!", builder.Res.StatusForPowerUnit);
     }
 
     [Fact]
@@ -32,10 +48,18 @@ public class Tests
     // third test
     private void CoolingSystemIsWeakForCPU()
     {
-        CommonRepo repo = CommonRepo.Instance;
-        var builder = new BuilderWithoutSpecialElements();
-        ResultStatus res = builder.MakeComputer(repo.MotherboardRepo.MotherboardList[0], repo.BiosRepo.BiosList[0], repo.CpuRepo.CpuList[1], repo.ProcessorCoolingSystemRepo.ProcessorCoolingSystemList[1], repo.RamRepo.RamList[0], repo.CaseRepo.CaseList[0], repo.PowerUnitRepo.PowerUnitList[0], repo.SsdRepo.SSDList[0], repo.HddRepo.HddList[0]);
-        Assert.Equal("Cooling System is too week for your CPU TDP, but will work for a while", res.StatusForProcessorCoolingSystem);
+        CommonRepository repository = CommonRepository.Instance;
+        repository.Faker();
+        var builder = new Builder();
+        builder.SetMotherboard(repository.MotherboardRepository.MotherboardList[0]);
+        builder.SetBIOS(repository.BiosRepository.BiosList[0]);
+        builder.SetCpu(repository.CpuRepository.CpuList[1]);
+        builder.SetCoolingSystem(repository.ProcessorCoolingSystemRepository.ProcessorCoolingSystemList[1]);
+        builder.SetRAM(repository.RamRepository.RamList[0]);
+        builder.SetCase(repository.CaseRepository.CaseList[0]);
+        builder.SetPowerUnit(repository.PowerUnitRepository.PowerUnitList[0]);
+        builder.SetDrive(repository.SsdRepository.SSDList[0],  repository.HddRepository.HddList[0]);
+        Assert.Equal("Cooling System is too week for your CPU TDP, but will work for a while", builder.Res.StatusForProcessorCoolingSystem);
     }
 
     [Fact]
@@ -43,9 +67,17 @@ public class Tests
     // fourth test
     private void WrongBios()
     {
-        CommonRepo repo = CommonRepo.Instance;
-        var builder = new BuilderWithoutSpecialElements();
-        ResultStatus res = builder.MakeComputer(repo.MotherboardRepo.MotherboardList[0], repo.BiosRepo.BiosList[1], repo.CpuRepo.CpuList[0], repo.ProcessorCoolingSystemRepo.ProcessorCoolingSystemList[0], repo.RamRepo.RamList[0], repo.CaseRepo.CaseList[0], repo.PowerUnitRepo.PowerUnitList[0], repo.SsdRepo.SSDList[0], repo.HddRepo.HddList[0]);
-        Assert.Equal("Not the needed type of Bios for motherboard, disclaimer of warranty", res.StatusForBIOS);
+        CommonRepository repository = CommonRepository.Instance;
+        repository.Faker();
+        var builder = new Builder();
+        builder.SetMotherboard(repository.MotherboardRepository.MotherboardList[0]);
+        builder.SetBIOS(repository.BiosRepository.BiosList[1]);
+        builder.SetCpu(repository.CpuRepository.CpuList[0]);
+        builder.SetCoolingSystem(repository.ProcessorCoolingSystemRepository.ProcessorCoolingSystemList[0]);
+        builder.SetRAM(repository.RamRepository.RamList[0]);
+        builder.SetCase(repository.CaseRepository.CaseList[0]);
+        builder.SetPowerUnit(repository.PowerUnitRepository.PowerUnitList[0]);
+        builder.SetDrive(repository.SsdRepository.SSDList[0],  repository.HddRepository.HddList[0]);
+        Assert.Equal("Not the needed type of Bios for motherboard, disclaimer of warranty", builder.Res.StatusForBIOS);
     }
 }

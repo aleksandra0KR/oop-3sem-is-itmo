@@ -10,9 +10,10 @@ public class ExtraTests
     private void CreatingNewVideoCardFromScratchAndAddingNewProductToRepo()
     {
         var videoCard = new VideoCard(new Dimensions(100, 100), 40, 2, 55, 45);
-        VideoCardRepo videoCardRepo = VideoCardRepo.Instance;
-        videoCardRepo.AddNewVideoCard(videoCard);
-        Assert.Equal(videoCard, videoCardRepo.VideoCards[1]);
+        VideoCardRepository videoCardRepository = VideoCardRepository.Instance;
+        videoCardRepository.Faker();
+        videoCardRepository.AddNewVideoCard(videoCard);
+        Assert.Equal(videoCard, videoCardRepository.VideoCards[videoCardRepository.VideoCards.Count - 1]);
     }
 
     [Fact]
@@ -20,8 +21,9 @@ public class ExtraTests
     // test for new video card based on old one
     private void CreatingNewVideoCardBasesOnOld()
     {
-        VideoCardRepo videoCardRepo = VideoCardRepo.Instance;
-        VideoCard videoCard = videoCardRepo.VideoCards[0];
+        VideoCardRepository videoCardRepository = VideoCardRepository.Instance;
+        videoCardRepository.Faker();
+        VideoCard videoCard = videoCardRepository.VideoCards[0];
         if (videoCard.Clone() is not VideoCard new_videCard) return;
         new_videCard.ChipFrequency = 60;
         Assert.Equal(60, new_videCard.ChipFrequency);
@@ -33,14 +35,23 @@ public class ExtraTests
     // test for new computer card based on old one
     private void CreatingNewComputerBasesOnOld()
     {
-        CommonRepo repo = CommonRepo.Instance;
-        var builder = new BuilderWithoutSpecialElements();
-        builder.MakeComputer(repo.MotherboardRepo.MotherboardList[0], repo.BiosRepo.BiosList[0], repo.CpuRepo.CpuList[1], repo.ProcessorCoolingSystemRepo.ProcessorCoolingSystemList[1], repo.RamRepo.RamList[0], repo.CaseRepo.CaseList[0], repo.PowerUnitRepo.PowerUnitList[0], repo.SsdRepo.SSDList[0], repo.HddRepo.HddList[0]);
+        CommonRepository repository = CommonRepository.Instance;
+        repository.Faker();
+        var builder = new Builder();
+        builder.SetMotherboard(repository.MotherboardRepository.MotherboardList[0]);
+        builder.SetBIOS(repository.BiosRepository.BiosList[0]);
+        builder.SetCpu(repository.CpuRepository.CpuList[1]);
+        builder.SetCoolingSystem(repository.ProcessorCoolingSystemRepository.ProcessorCoolingSystemList[1]);
+        builder.SetRAM(repository.RamRepository.RamList[0]);
+        builder.SetCase(repository.CaseRepository.CaseList[0]);
+        builder.SetPowerUnit(repository.PowerUnitRepository.PowerUnitList[0]);
+        builder.SetDrive(repository.SsdRepository.SSDList[0],  repository.HddRepository.HddList[0]);
         Builder newBuilder = builder.CloneComputer();
-        newBuilder.SetCpu(repo.CpuRepo.CpuList[0]);
-        newBuilder.SetCoolingSystem(repo.ProcessorCoolingSystemRepo.ProcessorCoolingSystemList[0]);
-        newBuilder.SetRAM(newBuilder.Computer.RAM);
-        newBuilder.SetPowerUnit(newBuilder.Computer.PowerUnit);
+        newBuilder.SetCpu(repository.CpuRepository.CpuList[0]);
+        newBuilder.SetCoolingSystem(repository.ProcessorCoolingSystemRepository.ProcessorCoolingSystemList[0]);
+        Computer? computer = builder.GiveComputer();
+        newBuilder.SetRAM(computer?.RAM);
+        newBuilder.SetPowerUnit(computer?.PowerUnit);
         Assert.Equal("Cooling System is too week for your CPU TDP, but will work for a while", builder.Res.StatusForProcessorCoolingSystem);
         Assert.Equal("Everything is great. Your computer available!", newBuilder.Res.StatusForPowerUnit);
     }
@@ -50,11 +61,22 @@ public class ExtraTests
     // test for computer with wifi and video card
     private void ComputerWithWIFIAndVideoCard()
     {
-        CommonRepo repo = CommonRepo.Instance;
-        var builder = new BuilderWithExcesses();
-        ResultStatus res = builder.MakeComputer(repo.MotherboardRepo.MotherboardList[0], repo.BiosRepo.BiosList[0], repo.CpuRepo.CpuList[0], repo.ProcessorCoolingSystemRepo.ProcessorCoolingSystemList[0], repo.RamRepo.RamList[0], repo.CaseRepo.CaseList[0], repo.PowerUnitRepo.PowerUnitList[0], repo.SsdRepo.SSDList[0], repo.HddRepo.HddList[0], repo.VideoCardRepo.VideoCards[0], repo.WifiRepo.WiFiLIst[0]);
-        Assert.Equal("Everything is great. Your computer available!", res.StatusOfComputer);
-        Assert.Equal(repo.VideoCardRepo.VideoCards[0], builder.Computer.VideoCard);
-        Assert.Equal(repo.WifiRepo.WiFiLIst[0], builder.Computer.WiFi);
+        CommonRepository repository = CommonRepository.Instance;
+        repository.Faker();
+        var builder = new Builder();
+        builder.SetMotherboard(repository.MotherboardRepository.MotherboardList[0]);
+        builder.SetBIOS(repository.BiosRepository.BiosList[0]);
+        builder.SetCpu(repository.CpuRepository.CpuList[0]);
+        builder.SetCoolingSystem(repository.ProcessorCoolingSystemRepository.ProcessorCoolingSystemList[0]);
+        builder.SetRAM(repository.RamRepository.RamList[0]);
+        builder.SetCase(repository.CaseRepository.CaseList[0]);
+        builder.SetPowerUnit(repository.PowerUnitRepository.PowerUnitList[0]);
+        builder.SetDrive(repository.SsdRepository.SSDList[0],  repository.HddRepository.HddList[0]);
+        builder.SetVideoCard(repository.VideoCardRepository.VideoCards[0]);
+        builder.SetWiFi(repository.WifiRepository.WiFiLIst[0]);
+        Assert.Equal("Everything is great. Your computer available!", builder.Res.StatusOfComputer);
+        Computer? computer = builder.GiveComputer();
+        Assert.Equal(repository.VideoCardRepository.VideoCards[0], computer?.VideoCard);
+        Assert.Equal(repository.WifiRepository.WiFiLIst[0], computer?.WiFi);
     }
 }
