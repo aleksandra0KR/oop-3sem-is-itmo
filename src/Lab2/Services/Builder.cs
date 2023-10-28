@@ -4,18 +4,6 @@ namespace Itmo.ObjectOrientedProgramming.Lab2;
 
 public class Builder
 {
-    /*public ResultStatus Make_computer(Motherboard? motherboard, BIOS? bios, CPU? cpu, ProcessorCoolingSystem? processorCoolingSystem, RandomAccessMemory? randomAccessMemory, CaseOf_computer? caseOf_computer, PowerUnit? powerUnit, SSD? ssd, Hdd? hdd)
-    {
-        SetMotherboard(motherboard);
-        SetBIOS(bios);
-        SetCpu(cpu);
-        SetCoolingSystem(processorCoolingSystem);
-        SetRAM(randomAccessMemory);
-        SetCase(caseOf_computer);
-        SetPowerUnit(powerUnit);
-        SetDrive(ssd, hdd);
-        return Res;
-    }*/
     public ResultStatus Res { get; set; } = new ResultStatus();
     private Computer Computer { get; } = new Computer();
     public Builder CloneComputer()
