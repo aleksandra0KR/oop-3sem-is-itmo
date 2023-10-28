@@ -35,7 +35,7 @@ public class ExtraTests
     {
         CommonRepo repo = CommonRepo.Instance;
         var builder = new BuilderWithoutSpecialElements();
-        builder.MakeComputer(repo.MotherboardRepo.MotherboardList[0], repo.BiosRepo.BiosList[0], repo.CpuRepo.CpuList[1], repo.ProcessorCoolingSystemRepo.ProcessorCoolingSystemList[1], repo.RamRepo.RamList[0], repo.CaseRepo.CaseList[0], repo.PowerUnitRepo.PowerUnitList[0], repo.SsdRepo.SSDList[0], repo.HddRepo.HddList[0], null, null);
+        builder.MakeComputer(repo.MotherboardRepo.MotherboardList[0], repo.BiosRepo.BiosList[0], repo.CpuRepo.CpuList[1], repo.ProcessorCoolingSystemRepo.ProcessorCoolingSystemList[1], repo.RamRepo.RamList[0], repo.CaseRepo.CaseList[0], repo.PowerUnitRepo.PowerUnitList[0], repo.SsdRepo.SSDList[0], repo.HddRepo.HddList[0]);
         Builder newBuilder = builder.CloneComputer();
         newBuilder.SetCpu(repo.CpuRepo.CpuList[0]);
         newBuilder.SetCoolingSystem(repo.ProcessorCoolingSystemRepo.ProcessorCoolingSystemList[0]);
