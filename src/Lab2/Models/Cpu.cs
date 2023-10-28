@@ -1,8 +1,8 @@
 namespace Itmo.ObjectOrientedProgramming.Lab2;
 
-public class CPU : IComponent
+public class Cpu : IComponent
 {
-    public CPU(string typeOfCpu, double coreFrequency, int numberOfCores, string socket, bool embeddedVideoCore, int maxSupportedMemoryFrequencies, int tdp, int powerConsumption)
+    public Cpu(string typeOfCpu, double coreFrequency, int numberOfCores, string socket, bool embeddedVideoCore, int maxSupportedMemoryFrequencies, int tdp, int powerConsumption)
     {
         TypeOfCPU = typeOfCpu;
         CoreFrequency = coreFrequency;
@@ -25,6 +25,6 @@ public class CPU : IComponent
 
     public IComponent Clone()
     {
-        return new CPU(TypeOfCPU, CoreFrequency, NumberOfCores, Socket, EmbeddedVideoCore, MaxSupportedMemoryFrequencies, TDP, PowerConsumption);
+        return new Cpu(TypeOfCPU, CoreFrequency, NumberOfCores, Socket, EmbeddedVideoCore, MaxSupportedMemoryFrequencies, TDP, PowerConsumption);
     }
 }
