@@ -1,5 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+    <ItemGroup>
+        <Folder Include="Tools\" />
+    </ItemGroup>
     <PropertyGroup>
 
 
@@ -18,9 +21,7 @@
 
 
 
-    <ItemGroup>
-      <Folder Include="Tools\" />
-    </ItemGroup>
+    
 
     </PropertyGroup>
 
