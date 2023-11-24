@@ -1,7 +1,30 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+
+
         <RootNamespace>Itmo.ObjectOrientedProgramming.Lab2</RootNamespace>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <ItemGroup>
+      <Folder Include="Tools\" />
+    </ItemGroup>
+
     </PropertyGroup>
+
+
+
 
 </Project>
