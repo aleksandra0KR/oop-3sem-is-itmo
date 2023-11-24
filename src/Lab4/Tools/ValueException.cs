@@ -1,6 +1,6 @@
 using System;
 
-namespace Itmo.ObjectOrientedProgramming.Lab2;
+namespace Itmo.ObjectOrientedProgramming.Lab4;
 
 public class ValueException : ArgumentNullException
 {
