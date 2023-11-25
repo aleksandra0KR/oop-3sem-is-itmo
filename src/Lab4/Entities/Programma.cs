@@ -19,7 +19,8 @@ public class Programma
             string read = Console.ReadLine() ?? throw new ValueException("Empty enter");
             Collection<string> argsf = SplitForCommand.SplitList(read);
             Command? command = CommandParser.Handle(argsf);
-            command?.Execute(filesystem);
+            if (command is null) throw new ValueException("Empty command");
+            command.Execute(filesystem);
             argsf.Clear();
         }
     }

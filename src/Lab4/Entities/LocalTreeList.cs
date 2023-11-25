@@ -6,6 +6,8 @@ namespace Itmo.ObjectOrientedProgramming.Lab4;
 public class LocalTreeList : State
 {
     private readonly int _depth;
+    private readonly string nameforfile = "file";
+    private readonly string namefocd = "cd";
     public LocalTreeList(string depth)
         : base(" ")
     {
@@ -37,12 +39,12 @@ public class LocalTreeList : State
 
         foreach (string file in files)
         {
-            Console.WriteLine(file);
+            Console.WriteLine(nameforfile, " ", file);
         }
 
         foreach (string directory in directories)
         {
-            Console.WriteLine(directory);
+            Console.WriteLine(namefocd, " ", directory);
             PrintList(directory, depth, currentDepth + 1);
         }
     }

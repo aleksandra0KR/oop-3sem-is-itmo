@@ -1,4 +1,6 @@
 using System.Collections.ObjectModel;
+using Itmo.ObjectOrientedProgramming.Lab4.Entities;
+using Itmo.ObjectOrientedProgramming.Lab4.Models;
 
 namespace Itmo.ObjectOrientedProgramming.Lab4.Parser;
 
@@ -9,14 +11,10 @@ public class FileShowCommandParser : CommandParser
         if (args is null) throw new ValueException("Empty name of command");
         if (args[0] != "file" || args[1] != "show") return base.Handle(args);
         if (args.Count != 5) throw new ValueException("Not enough parameters");
-        string adress = args[2];
-        string mode = args[4];
 
-        State state;
-        if (mode == "local") state = new LocalFileShow(adress);
-        else throw new ValueException("unsupported mode");
-
-        Command command = new CommandFileShow(state);
+        MoodParser moodParser = new LocalMod();
+        moodParser.SetNextHandler(new LocalMod());
+        Command? command = moodParser.Handle(args);
         return command;
     }
 }

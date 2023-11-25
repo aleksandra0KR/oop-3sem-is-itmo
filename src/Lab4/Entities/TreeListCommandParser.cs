@@ -1,4 +1,6 @@
 using System.Collections.ObjectModel;
+using Itmo.ObjectOrientedProgramming.Lab4.Entities;
+using Itmo.ObjectOrientedProgramming.Lab4.Models;
 
 namespace Itmo.ObjectOrientedProgramming.Lab4.Parser;
 
@@ -10,9 +12,9 @@ public class TreeListCommandParser : CommandParser
         if (args[0] != "tree" || args[1] != "list") return base.Handle(args);
         if (args.Count != 4) throw new ValueException("Not enough parameters");
 
-        State state = new LocalTreeList(args[3]);
-
-        Command command = new CommandTreeList(state);
+        MoodParser moodParser = new LocalMod();
+        moodParser.SetNextHandler(new LocalMod());
+        Command? command = moodParser.Handle(args);
         return command;
     }
 }
