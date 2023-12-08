@@ -1,4 +1,4 @@
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace Itmo.ObjectOrientedProgramming.Lab4.Parser;
 
@@ -11,7 +11,7 @@ public abstract class CommandParser
         NextParser = nextparser;
     }
 
-    public virtual Command? Handle(Collection<string> args)
+    public virtual Command? Handle(Dictionary<string, string> args)
     {
         return NextParser?.Handle(args);
     }
