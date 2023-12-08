@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 
@@ -5,13 +6,15 @@ namespace Itmo.ObjectOrientedProgramming.Lab4.Parser;
 
 public class SplitForCommand
 {
-    private Collection<string> Path { get; } = new Collection<string>();
+    private Collection<string> Path { get; } = new();
+    private Dictionary<string, string> Commands { get; } = new();
 
     private StringBuilder Element { get; set; } = new StringBuilder();
-    public Collection<string> SplitList(string input)
+    public Dictionary<string, string> SplitList(string input)
     {
         if (input is null) throw new ValueException("Empty input");
         Path.Clear();
+        Commands.Clear();
         Element = new StringBuilder();
 
         bool insideQuotes = false;
@@ -46,6 +49,11 @@ public class SplitForCommand
             Path.Add(Element.ToString());
         }
 
-        return Path;
+        for (int i = 0; i < Path.Count; i += 1)
+        {
+            Commands.Add(Path[i], Path[i + 1]);
+        }
+
+        return Commands;
     }
 }

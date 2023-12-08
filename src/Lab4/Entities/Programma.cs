@@ -1,5 +1,5 @@
 using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using Itmo.ObjectOrientedProgramming.Lab4.FS;
 
 namespace Itmo.ObjectOrientedProgramming.Lab4.Parser;
@@ -17,11 +17,10 @@ public class Programma
         while (true)
         {
             string read = Console.ReadLine() ?? throw new ValueException("Empty enter");
-            Collection<string> argsf = SplitForCommand.SplitList(read);
-            Command? command = CommandParser.Handle(argsf);
+            Dictionary<string, string> arguments = SplitForCommand.SplitList(read);
+            Command? command = CommandParser.Handle(arguments);
             if (command is null) throw new ValueException("Empty command");
             command.Execute(filesystem);
-            argsf.Clear();
         }
     }
 }

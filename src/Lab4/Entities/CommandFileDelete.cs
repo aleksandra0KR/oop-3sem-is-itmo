@@ -1,16 +1,34 @@
+using System;
+using System.IO;
+
 namespace Itmo.ObjectOrientedProgramming.Lab4;
 
 public class CommandFileDelete : Command
 {
-    public CommandFileDelete(State? state)
+    public CommandFileDelete(string address)
     {
-        State = state ?? throw new ValueException("Empty state");
+        Address = address;
     }
 
-    private State State { get; }
+    public string Address { get; }
 
     public override void Execute(Filesystem fileSystem)
     {
-        State.Execute(fileSystem);
+        if (fileSystem is null || !fileSystem.IsConnected() || Address is null) throw new ValueException("Empty file System");
+        if (File.Exists(Address))
+        {
+            try
+            {
+                File.Delete(Address);
+            }
+            catch (ArgumentException)
+            {
+                throw new ValueException("Path is damaged");
+            }
+        }
+        else
+        {
+            throw new ValueException("Path is damaged");
+        }
     }
 }

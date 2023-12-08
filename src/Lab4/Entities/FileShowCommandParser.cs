@@ -1,20 +1,16 @@
-using System.Collections.ObjectModel;
-using Itmo.ObjectOrientedProgramming.Lab4.Entities;
+using System.Collections.Generic;
 using Itmo.ObjectOrientedProgramming.Lab4.Models;
 
 namespace Itmo.ObjectOrientedProgramming.Lab4.Parser;
 
-public class FileShowCommandParser : CommandParser
+public class FileShowCommandParser : CommandParserWithParameters
 {
-    public override Command? Handle(Collection<string> args)
+    public override Command? Handle(Dictionary<string, string> args)
     {
         if (args is null) throw new ValueException("Empty name of command");
-        if (args[0] != "file" || args[1] != "show") return base.Handle(args);
-        if (args.Count != 5) throw new ValueException("Not enough parameters");
+        if (args["command"] != "fileshow") return base.Handle(args);
+        if (args.Count < 3) throw new ValueException("Not enough parameters");
 
-        MoodParser moodParser = new LocalMod();
-        moodParser.SetNextHandler(new LocalMod());
-        Command? command = moodParser.Handle(args);
-        return command;
+        return HandleParameters(args);
     }
 }

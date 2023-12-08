@@ -1,17 +1,16 @@
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace Itmo.ObjectOrientedProgramming.Lab4.Parser;
 
 public class FileRenameCommandParser : CommandParser
 {
-    public override Command? Handle(Collection<string> args)
+    public override Command? Handle(Dictionary<string, string> args)
     {
         if (args is null) throw new ValueException("Empty name of command");
-        if (args[0] != "file" || args[1] != "rename") return base.Handle(args);
-        if (args.Count != 4) throw new ValueException("Not enough parameters");
+        if (args["command"] != "filerename") return base.Handle(args);
+        if (args.Count < 3) throw new ValueException("Not enough parameters");
 
-        State state = new LocalFileRename(args[2], args[3]);
-        Command command = new CommandFileRename(state);
+        Command command = new CommandFileRename(args["path"], args["destination"]);
         return command;
     }
 }

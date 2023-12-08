@@ -2,15 +2,16 @@ namespace Itmo.ObjectOrientedProgramming.Lab4;
 
 public class CommandTreeGoto : Command
 {
-    public CommandTreeGoto(State? state)
+    public CommandTreeGoto(string address)
     {
-        State = state ?? throw new ValueException("Empty state");
+        Address = address;
     }
 
-    private State State { get; }
-
+    private string Address { get; }
     public override void Execute(Filesystem fileSystem)
     {
-        State.Execute(fileSystem);
+        if (fileSystem is null || !fileSystem.IsConnected()) throw new ValueException("Empty file system");
+        if (Address is null) throw new ValueException("Empty path");
+        fileSystem.AbsolutePath = Address;
     }
 }

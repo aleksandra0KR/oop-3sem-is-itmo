@@ -1,16 +1,29 @@
+using System.IO;
+
 namespace Itmo.ObjectOrientedProgramming.Lab4;
 
 public class CommandFileCopy : Command
 {
-    public CommandFileCopy(State? state)
+    public CommandFileCopy(string destination, string address)
     {
-        State = state ?? throw new ValueException("Empty state");
+        Destination = destination;
+        Address = address;
     }
 
-    private State State { get; }
+    private string Address { get; }
+    private string Destination { get; }
 
     public override void Execute(Filesystem fileSystem)
     {
-        State.Execute(fileSystem);
+        if (fileSystem is null || !fileSystem.IsConnected()) throw new ValueException("Empty file system");
+
+        try
+        {
+            File.Copy(Address, Destination, true);
+        }
+        catch (IOException)
+        {
+            throw new ValueException("Path is damaged");
+        }
     }
 }
