@@ -26,8 +26,7 @@ public class Tests
         Filesystem fileSystem = new LocalFileSystem();
         command.Execute(fileSystem);
         string filePath = "/Users/aleksandrakr/desktop/file.txt";
-        State state2 = new LocalFileDelete(filePath);
-        var fileMock = new Mock<CommandFileDelete>(state2);
+        var fileMock = new Mock<CommandFileDelete>(filePath);
 
         fileMock.Object.Execute(fileSystem);
 
@@ -44,8 +43,7 @@ public class Tests
 
         string sourceFilePath = "C/users/ITMO/source.txt";
         string destinationFilePath = "C/users/ITMO/destination.txt";
-        State state2 = new LocalFileMove(sourceFilePath, destinationFilePath);
-        var fileMock = new Mock<CommandFileMove>(state2);
+        var fileMock = new Mock<CommandFileMove>(sourceFilePath, destinationFilePath);
 
         fileMock.Object.Execute(fileSystem);
 
@@ -62,8 +60,7 @@ public class Tests
 
         string sourceFilePath = "C/users/ITMO/source";
         string destinationFilePath = "C/users/ITMO/destination";
-        State state2 = new LocalCopyFile(sourceFilePath, destinationFilePath);
-        var fileMock = new Mock<CommandFileCopy>(state2);
+        var fileMock = new Mock<CommandFileCopy>(sourceFilePath, destinationFilePath);
 
         fileMock.Object.Execute(fileSystem);
 
@@ -80,8 +77,7 @@ public class Tests
 
         string sourceFilePath = "C/users/ITMO/source.txt";
         string destinationname = "destination.txt";
-        State state2 = new LocalFileRename(sourceFilePath, destinationname);
-        var fileMock = new Mock<CommandFileRename>(state2);
+        var fileMock = new Mock<CommandFileRename>(sourceFilePath, destinationname);
 
         fileMock.Object.Execute(fileSystem);
 
@@ -113,8 +109,7 @@ public class Tests
         Filesystem fileSystem = new LocalFileSystem();
         command.Execute(fileSystem);
 
-        State state2 = new LocalTreeList("3");
-        var fileMock = new Mock<CommandTreeList>(state2);
+        var fileMock = new Mock<CommandTreeList>("3");
 
         fileMock.Object.Execute(fileSystem);
 
