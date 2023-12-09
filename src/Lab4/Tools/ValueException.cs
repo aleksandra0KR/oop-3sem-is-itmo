@@ -1,6 +1,6 @@
 using System;
 
-namespace Itmo.ObjectOrientedProgramming.Lab2;
+namespace Itmo.ObjectOrientedProgramming.Lab4;
 
 public class ValueException : ArgumentNullException
 {
@@ -8,7 +8,7 @@ public class ValueException : ArgumentNullException
     { }
 
     public ValueException(string message)
-        : base(message)
+        : base(message + "can't be null")
     { }
 
     public ValueException(string message, int val)
